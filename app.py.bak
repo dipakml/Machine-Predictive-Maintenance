@@ -7,9 +7,9 @@ Created on Sat Jun 13 02:20:31 2020
 
 # -*- coding: utf-8 -*-
 """
-Created on Sat June 11 11:05:04 2022
+Created on #### ##:##:## 2022
 
-@author: Dipak Argade
+@author: Prismatic Webtech Services
 """
 
 import numpy as np
@@ -31,26 +31,72 @@ def predict(Age,Sex,RestingBP,Cholesterol,FastingBS,MaxHR,ExerciseAngina,Oldpeak
 
 def main():
     html_temp = """
-    <div style="background-color:blue;padding:10px">
+    <div style="background-color:tomato;padding:10px">
     <h2 style="color:white;text-align:center;">Heart Disease Prediction </h2>
     </div>
     """
+    
+    
+    header_container = st.container()    
+    with header_container:
+	# for example a logo or a image that looks like a website header
+        st.image('img2.png')
+        
+   
+    
     st.markdown(html_temp,unsafe_allow_html=True)
     Age = st.number_input("Age")
-    Sex = st.number_input("Sex")
-    Cholesterol	 = st.number_input("Cholesterol")
+    Sex = st.selectbox("Sex",("Male","Female"))
+    if Sex =='Male':
+        Sex = 1
+    else:
+        Sex = 0
     RestingBP	 = st.number_input("RestingBP")
+    Cholesterol	 = st.number_input("Cholesterol")
+
     FastingBS	 = st.number_input("FastingBS")
     MaxHR	 = st.number_input("MaxHR")
-    ExerciseAngina	 = st.number_input("ExerciseAngina")
+    ExerciseAngina = st.selectbox("ExerciseAngina",("N","Y"))
+    if ExerciseAngina =='Y':
+        ExerciseAngina = 1
+    else:
+        ExerciseAngina = 0
     Oldpeak	 = st.number_input("Oldpeak")
-    ChestPainType_ATA	 = st.selectbox("ChestPainType_ATA_Yes=1_No=0",("0","1"))
-    ChestPainType_NAP	 = st.selectbox("ChestPainType_NAP_Yes=1_No=0",("0","1"))
-    ChestPainType_TA	 = st.selectbox("ChestPainType_TA_Yes=1_No=0",("0","1"))
-    RestingECG_Normal	 = st.selectbox("RestingECG_Normal_Yes=1_No=0",("0","1"))
-    RestingECG_ST	 = st.selectbox("RestingECG_ST_Yes=1_No=0",("0","1"))
-    ST_Slope_Flat	 = st.selectbox("ST_Slope_Flat_Yes=1_No=0",("0","1"))
-    ST_Slope_Up	 = st.selectbox("ST_Slope_Up_Yes=1_No=0",("0","1"))
+    ChestPainType = st.sidebar.selectbox("ChestPainType",("ATA","NAP","ASY","TA"))
+    if ChestPainType == 'ATA':
+        ChestPainType_ATA = 1
+        ChestPainType_NAP = 0
+        ChestPainType_TA = 0
+    elif ChestPainType == 'NAP':
+        ChestPainType_ATA = 0
+        ChestPainType_NAP = 1
+        ChestPainType_TA = 0
+    else:
+        ChestPainType_ATA = 0
+        ChestPainType_NAP = 0
+        ChestPainType_TA = 0
+    RestingECG	 = st.sidebar.selectbox("RestingECG",("Normal","ST","LVH"))
+    if RestingECG == 'Normal':
+        RestingECG_Normal = 1
+        RestingECG_ST = 0
+    elif RestingECG == 'ST':
+        RestingECG_Normal = 0
+        RestingECG_ST = 1
+    else:
+        RestingECG_Normal = 0
+        RestingECG_ST = 0
+    
+    ST_Slope	 = st.sidebar.selectbox("ST Slope",("Up","Flat","Down"))
+    if ST_Slope == 'Up':
+        ST_Slope_Flat = 0
+        ST_Slope_Up = 1
+    elif ST_Slope == 'Flat':
+        ST_Slope_Flat = 1
+        ST_Slope_Up = 0
+    else:
+        ST_Slope_Flat = 0
+        ST_Slope_Up = 0
+    
     result=""
     if st.button("Predict"):
         result=predict(Age,Sex,RestingBP,Cholesterol,FastingBS,MaxHR,ExerciseAngina,Oldpeak,

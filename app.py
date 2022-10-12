@@ -2,63 +2,81 @@
 """
 Created on Sat Jun 13 02:20:31 2020
 
-@author: Dipak Argade
+@author: DA 
 """
 
 # -*- coding: utf-8 -*-
 """
-Created on Sat June 11 11:05:04 2022
+Created on 12/08/2022
 
-@author: Dipak Argade
+@Created by: DA
 """
 
 import numpy as np
 import pickle
 import pandas as pd
+from xgboost import XGBClassifier
 import streamlit as st 
 from PIL import Image
 
-pickle_in = open("sv.pkl","rb")
-sv=pickle.load(pickle_in)  
+pickle_in = open("rfc.pkl","rb")
+rfc=pickle.load(pickle_in)  
 
-def predict(Age,Sex,RestingBP,Cholesterol,FastingBS,MaxHR,ExerciseAngina,Oldpeak,ChestPainType_ATA,ChestPainType_NAP,ChestPainType_TA,RestingECG_Normal,RestingECG_ST,ST_Slope_Flat,ST_Slope_Up):
-   
-    prediction=sv.predict([[Age,Sex,RestingBP,Cholesterol,FastingBS,MaxHR,ExerciseAngina,Oldpeak, ChestPainType_ATA,ChestPainType_NAP,ChestPainType_TA,RestingECG_Normal,RestingECG_ST,ST_Slope_Flat,ST_Slope_Up]])
-    print(prediction)
-    return prediction
+pickle_in2 = open("rfc2.pkl","rb")
+rfc2=pickle.load(pickle_in2) 
 
 
 
 def main():
     html_temp = """
-    <div style="background-color:blue;padding:10px">
-    <h2 style="color:white;text-align:center;">Heart Disease Prediction </h2>
+    <div style="background-color:tomato;padding:10px">
+    <h2 style="color:white;text-align:center;">Machine Predictive Maintenance </h2>
     </div>
     """
+     
+    
     st.markdown(html_temp,unsafe_allow_html=True)
-    Age = st.number_input("Age")
-    Sex = st.number_input("Sex")
-    Cholesterol	 = st.number_input("Cholesterol")
-    RestingBP	 = st.number_input("RestingBP")
-    FastingBS	 = st.number_input("FastingBS")
-    MaxHR	 = st.number_input("MaxHR")
-    ExerciseAngina	 = st.number_input("ExerciseAngina")
-    Oldpeak	 = st.number_input("Oldpeak")
-    ChestPainType_ATA	 = st.sidebar.selectbox("ChestPainType_ATA_Yes=1_No=0",("0","1"))
-    ChestPainType_NAP	 = st.sidebar.selectbox("ChestPainType_NAP_Yes=1_No=0",("0","1"))
-    ChestPainType_TA	 = st.sidebar.selectbox("ChestPainType_TA_Yes=1_No=0",("0","1"))
-    RestingECG_Normal	 = st.sidebar.selectbox("RestingECG_Normal_Yes=1_No=0",("0","1"))
-    RestingECG_ST	 = st.sidebar.selectbox("RestingECG_ST_Yes=1_No=0",("0","1"))
-    ST_Slope_Flat	 = st.sidebar.selectbox("ST_Slope_Flat_Yes=1_No=0",("0","1"))
-    ST_Slope_Up	 = st.sidebar.selectbox("ST_Slope_Up_Yes=1_No=0",("0","1"))
+
+    Type = st.selectbox("Type",("M","L","H"))
+    if Type == 'M':
+        Type_L = 0
+        Type_M = 1
+        
+    elif Type == 'L':
+        Type_L = 1
+        Type_M = 0
+
+    else:
+        Type_L = 0
+        Type_M = 0
+
+    Air_temperature_K = st.number_input("Air temperature(K)")
+
+    Process_temperature_K = st.number_input("Process temperature(K)")
+
+    Rotational_speed_rpm = st.number_input("Rotational speed(rpm)")
+
+    Torque_Nm = st.number_input("Torque(Nm)")
+
+    Tool_wear_min = st.number_input("Tool wear(min)")
+
+
+    
     result=""
-    if st.button("Predict"):
-        result=predict(Age,Sex,RestingBP,Cholesterol,FastingBS,MaxHR,ExerciseAngina,Oldpeak,
-            ChestPainType_ATA,ChestPainType_NAP,ChestPainType_TA,RestingECG_Normal,RestingECG_ST,ST_Slope_Flat,ST_Slope_Up)
+    
+    if st.button("Predict the occurance of failure"):
+        result=rfc.predict([[Air_temperature_K,Process_temperature_K,Rotational_speed_rpm,Torque_Nm,Tool_wear_min,Type_L,Type_M]])
         if result ==1:
-            return st.header('Heart Disease predicted')
+            return st.header('Machine Failure is predicted')
         else:
-            return st.header('No Heart Disease')
+            return st.header('No Machine Failure')
+
+    result2=""
+    
+    if st.button("Predict the type of failure"):
+        result2=rfc2.predict([[Air_temperature_K,Process_temperature_K,Rotational_speed_rpm,Torque_Nm,Tool_wear_min,Type_L,Type_M]])
+        return st.header(result2)
+
 if __name__=='__main__':
     main()
     
