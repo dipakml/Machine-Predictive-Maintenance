@@ -71,7 +71,7 @@ The following points were the objective of the project.
 - After downloading, cd into the working directory.
 - Begin a new virtual environment with Python 3 and activate it.
 - Install the required packages using pip install -r requirements.txt
-- Execute the command: python app.py
+- Execute the command: streamlit run app.py
 
 
 ### Note:
