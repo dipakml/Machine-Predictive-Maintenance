@@ -17,7 +17,7 @@
 ### Overview 
 Predictive Maintenance Using Machine Learning allows you to run automated data processing on an example dataset or your own dataset. The included ML model detects potential equipment failures and provides recommended actions to take.
 
-In this project, the objective is to predict whether the machine will fail or not at the given operating condition 
+In this project, the objective is to predict whether the machine will fail or not at the given operating condition. 
 
 The data set that is used in this project has been taken from the [UCI repository](https://archive.ics.uci.edu/ml/datasets/AI4I+2020+Predictive+Maintenance+Dataset)
 
@@ -33,7 +33,7 @@ If at least one of the above failure modes is true, the process fails and the 'm
 
 ### Motivation
 The motivation was to use machine learning experiments to try to predict the future failures & help taking preventive measures.
-Idea is to implemet the end to end machine learning project while using free deployment platform like [Heroku].
+Idea is to implement the end to end machine learning project while using free deployment platform like Heroku.
 
 
 
