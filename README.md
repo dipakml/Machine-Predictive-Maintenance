@@ -6,7 +6,7 @@
   * [Attribute Information](#attribute-Information)
   * [Motivation](#motivation)
   * [Demo](#demo)
-  * [Learning Objective](#Learning-Objective)
+  * [Steps in project execution](#Steps)
   * [Technical Aspect](#technical-aspect)
   * [Technologies Used](#technologies-used)
   * [Installation](#installation)
@@ -40,8 +40,7 @@ Idea is to implement the end to end machine learning project while using free de
 ### Demo
 [Visit this link for live demo](https://machinepredmaintenance.herokuapp.com/)
 
-### Learning Objective
-The following points were the objective of the project.
+### Steps in project execution
 
 - Data gathering 
 - Descriptive Analysis 
@@ -60,10 +59,10 @@ The following points were the objective of the project.
 ### Technologies Used  
 ![](https://forthebadge.com/images/badges/made-with-python.svg) 
 
-[<img target="_blank" src="https://github.com/scikit-learn/scikit-learn/blob/master/doc/logos/scikit-learn-logo-small.png">](https://github.com/scikit-learn/)
-<img target="_blank" src="https://github.com/ditikrushna/End-to-End-Diabetes-Prediction-Application-Using-Machine-Learning/blob/master/Resource/heroku.png" width=170>
-<img target="_blank" src="https://github.com/ditikrushna/End-to-End-Diabetes-Prediction-Application-Using-Machine-Learning/blob/master/Resource/numpy.png" width=170>
-<img target="_blank" src="https://github.com/ditikrushna/End-to-End-Diabetes-Prediction-Application-Using-Machine-Learning/blob/master/Resource/pandas.jpeg" width=170>
+<img target="_blank" src="https://github.com/dipakml/Prediction-of-Concrete-Compressive-Strength/blob/master/Logo_Images/streamlit.png" width=170>
+<img target="_blank" src="https://github.com/dipakml/Prediction-of-Concrete-Compressive-Strength/blob/master/Logo_Images/heroku.png" width=170>
+<img target="_blank" src="https://github.com/dipakml/Prediction-of-Concrete-Compressive-Strength/blob/master/Logo_Images//numpy.png" width=170>
+<img target="_blank" src="https://github.com/dipakml/Prediction-of-Concrete-Compressive-Strength/blob/master/Logo_Images/pandas.jpeg" width=170>
 
 
 ### Installation 
