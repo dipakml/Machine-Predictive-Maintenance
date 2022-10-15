@@ -56,6 +56,7 @@ Idea is to implement the end to end machine learning project while using free de
 - Building and hosting a streamlit web app on Heroku. 
 - A user has to input machine operating features.
 - Once it gets all the fields information , the prediction is displayed. 
+
 ### Technologies Used  
 ![](https://forthebadge.com/images/badges/made-with-python.svg) 
 
